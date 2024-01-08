@@ -18,7 +18,7 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
 
     public Integer popPays(Integer idPays);
 
-    @Query (value = "SELECT country.name AS name, COUNT(city.population) AS pop"
+    @Query (value = "SELECT country.name AS name, SUM(city.population) AS pop"
             + "FROM country INNER JOIN city USING (id)"
             + "GROUP BY name, country.id",
             nativeQuery = true)
