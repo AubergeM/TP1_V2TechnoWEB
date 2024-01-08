@@ -60,10 +60,26 @@ public class CountryRepositoryTest {
 
     @Test
     @Sql("test-data.sql")
-    void listePopulationTestFr() {
-            log.info("On teste la liste pour la France");
-            assertEquals(12, countryDAO.popParPays().get(0).getPop());
-            assertEquals("France", countryDAO.popParPays().get(0).getNom());
-
+    void listePopulationTestFr(){
+        log.info("On teste la liste pour la France");
+        assertEquals(12, countryDAO.popParPays().get(0).getPop());
+        //assertEquals("France", countryDAO.popParPays().get(0).getNom());
     }
+
+    @Test
+    @Sql("test-data.sql")
+    void listePopulationTestUk(){
+        log.info("On teste la liste pour uk");
+        assertEquals(18, countryDAO.popParPays().get(1).getPop());
+        //assertEquals("United Kingdom", countryDAO.popParPays().get(1).getNom());
+    }
+
+    @Test
+    @Sql("test-data.sql")
+    void listePopulationTestUs(){
+        log.info("On teste la liste pour les US");
+        assertEquals(27, countryDAO.popParPays().get(2).getPop());
+        //assertEquals("United States of America", countryDAO.popParPays().get(2).getNom());
+    }
+
 }

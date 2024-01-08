@@ -12,15 +12,15 @@ import monprojet.entity.Country;
 
 public interface CountryRepository extends JpaRepository<Country, Integer> {
     @Query (value = "SELECT SUM(population) "
-            + "FROM city"
-            + "WHERE country_id = :idPays",
+            + "FROM city "
+            + "WHERE country_id = :idPays ",
             nativeQuery = true)
 
     public Integer popPays(Integer idPays);
 
-    @Query (value = "SELECT country.name AS name, SUM(city.population) AS pop"
-            + "FROM country INNER JOIN city USING (id)"
-            + "GROUP BY name, country.id",
+    @Query (value = "SELECT country.name AS name, SUM(city.population) AS pop "
+            + "FROM country INNER JOIN city USING (id) "
+            + "GROUP BY name, country.id ",
             nativeQuery = true)
 
     public List<DTO> popParPays();
